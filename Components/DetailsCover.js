@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {View,Text,StyleSheet,StatusBar} from 'react-native'
+import {View,Text,StyleSheet,Image} from 'react-native'
 import {Feather,Entypo} from '@expo/vector-icons'
 
 import Card from './Card'
@@ -19,6 +19,9 @@ const DetailsCover = props =>{
                         <Feather name='map' color={'white'} size={25}/>
                     </View>
                 </View> 
+                <View style={styles.imageBox}>
+                    {props.children}
+                </View>
                 <View style={styles.bottomBox}>
                     <View style={styles.location}>
                         <Entypo name='location-pin' color={'white'} size={25}/>
@@ -85,6 +88,12 @@ const styles = StyleSheet.create({
     temperatureValue:{
         color : 'white',
         fontSize : 70,
+    },
+    imageBox:{
+        // borderWidth : 1,
+        width : '80%',
+        alignItems : 'center',
+        justifyContent :'center'
     }
 })
 

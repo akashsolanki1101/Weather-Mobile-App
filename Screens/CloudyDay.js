@@ -10,14 +10,13 @@ const CloudyDay = props =>{
         <View style={styles.container}>
             <StatusBar 
                 backgroundColor={Colors.cloudyDay}/>
-                    <Image source={require('../assets/Images/Cloudy.png')} style={styles.image}/>
             <DetailsCover
                 dayQuote="Sun under the clouds"
                 location="Pune, Maharashtra"
                 temperature={32}
                 windSpeed={10}
                 humidity={45}
-            />
+            ><Image source={require('../assets/Images/Cloudy.png')} style={styles.image}/></DetailsCover>
         </View>
     )
 }
@@ -29,11 +28,8 @@ const styles = StyleSheet.create({
         paddingVertical : 30
     },
     image:{
-        position : 'absolute',
-        top : 130,
-        left : -50,
-        width : 500,
-        height : 500,
+        width : 450,
+        height : 450,
         zIndex : 10,
     }
 })
