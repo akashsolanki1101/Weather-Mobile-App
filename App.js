@@ -1,54 +1,55 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 
-import { StyleSheet, Text, View} from 'react-native';
+import {createStore,combineReducers,applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
 import {AppLoading} from 'expo'
 import * as Fonts from 'expo-font'
+import ReduxThunk from 'redux-thunk'
+// import { StyleSheet, Text, View} from 'react-native';
 
-import CloudyDay from './Screens/CloudyDay';
-import SunnyDay from './Screens/SunnyDay';
-import RainyDay from './Screens/RainyDay';
-import LocationPicker from './Components/LocationPicker';
-import GetWeatherData from './Components/GetWeatherData'
+// import CloudyDay from './Screens/CloudyDay';
+// import SunnyDay from './Screens/SunnyDay';
+// import RainyDay from './Screens/RainyDay';
+// import LocationPicker from './Components/LocationPicker';
+// import GetWeatherData from './Components/GetWeatherData'
+// import MapScreen from './Screens/Map'
+// import ENV from './ENV'
+import Location from './Store/Reducers/Location'
+import Weather from './Store/Reducers/Weather'
 
-export default function App() {
+import ScreenHandler from './Components/ScreenHandler'
+
+const App = ()=>{
   const [isLoaded,setIsloaded] = useState(false)
-  const [coordinates,setCoordinates] = useState(null)
-  const [weatherInfo,setWeatherInfo]  = useState()
-  
-  const fetchLocation = coords =>{
-    setCoordinates(coords)
-  }
 
-  const fetchWeatherData = data =>{
-    setWeatherInfo(data)
-  }
+  const rootReducer = combineReducers({
+    location : Location,
+    weather : Weather
+  })
+
+  const store = createStore(rootReducer,applyMiddleware(ReduxThunk))
 
   const fetchFonts = ()=>{
     return Fonts.loadAsync({
       'Dosis' : require('./assets/Fonts/Dosis-VariableFont_wght.ttf'),
       'Open Sans-Bold' : require('./assets/Fonts/OpenSansCondensed-Bold.ttf'),
       'Open Sans-Light' : require('./assets/Fonts/OpenSansCondensed-Light.ttf') 
-    })}
+    }
+  )}
+
   if(!isLoaded)
   {
     return <AppLoading 
             startAsync={fetchFonts} 
             onFinish={()=>setIsloaded(true)}/>
   }
+  
   return (
-    
-    <View style={styles.container}>
-      {
-        coordinates!==null ? <GetWeatherData long={coordinates.long} lat={coordinates.lat} fetchWeatherData={fetchWeatherData}/> : null
-      }
-      <LocationPicker fetchLocation={fetchLocation}/>
-      <CloudyDay />
-    </View>
-  );
+    <Provider store={store}>
+        <ScreenHandler />
+    </Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+
+export default App

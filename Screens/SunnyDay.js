@@ -14,11 +14,10 @@ const SunnyDay = props =>{
             <StatusBar 
                 backgroundColor={Colors.sunnyDay}/>
             <DetailsCover
-                dayQuote="Sunny day walk"
-                location="Guna, Madhya Pradesh"
-                temperature={32}
-                windSpeed={10}
-                humidity={45}
+                locationAddress={props.address}
+                weatherData={props.weatherData}
+                showMapHandler={props.showMapHandler}
+                getMyLocation={props.getMyLocationHandler}
             ><Image source={require('../assets/Images/Sun-With-Shadow4.png')} style={styles.image}/></DetailsCover>
         </View>
     )

@@ -1,11 +1,10 @@
 import React from 'react'
 
-import {View,Text,StyleSheet,Image} from 'react-native'
-import {Feather,Entypo} from '@expo/vector-icons'
+import {View,Text,StyleSheet,Image,FlatList} from 'react-native'
+import {Feather,Entypo,MaterialIcons} from '@expo/vector-icons'
 
 import Card from './Card'
 // import Colors from '../Constants/Colors'
-
 
 const DetailsCover = props =>{
     return(
@@ -13,10 +12,11 @@ const DetailsCover = props =>{
             <View style={styles.details}>
                 <View style={styles.topBox}>
                     <View style={styles.dayType}>
-                        <Text style={styles.dayTypeText}>{props.dayQuote}</Text>
+                        <Text style={styles.dayTypeText}>{props.weatherData.summary}</Text>
                     </View>
                     <View style={styles.mapIcon}>
-                        <Feather name='map' color={'white'} size={25}/>
+                        <Feather name='map' color={'white'} size={25} onPress={props.showMapHandler}/>
+                        <MaterialIcons name='my-location' color={'white'} size={28} onPress={props.getMyLocation}/>                        
                     </View>
                 </View> 
                 <View style={styles.imageBox}>
@@ -25,17 +25,21 @@ const DetailsCover = props =>{
                 <View style={styles.bottomBox}>
                     <View style={styles.location}>
                         <Entypo name='location-pin' color={'white'} size={25}/>
-                        <Text style={styles.locationText} numberOfLines={1}>{props.location}</Text>
+                        <Text style={styles.locationText} numberOfLines={1}>{props.locationAddress}</Text>
                     </View>
                     <View style={styles.weatherData}>
-                        <Text style={styles.temperatureValue}>{props.temperature}°</Text>
-                        <Card 
-                            title="Wind"
-                            data={`${props.windSpeed}km/h`}/>
-                        <Card
-                            title="Humidity"
-                            data={`${props.humidity}%`} 
+                        <Text style={styles.temperatureValue}>{Math.ceil(props.weatherData.temperature)}°</Text>
+                        <FlatList 
+                            keyExtractor={item => item.title}
+                            horizontal={true}
+                            data={props.weatherData.otherFactors}
+                            renderItem={object=>{
+                                return <Card 
+                                title={object.item.title}
+                                data={object.item.value}/>
+                            }}
                         />
+                        
                     </View>
                 </View>
             </View>
@@ -66,7 +70,9 @@ const styles = StyleSheet.create({
         textAlign : 'justify'
     },
     mapIcon:{
-        paddingTop : 10
+        height : 85,
+        paddingTop : 10,
+        justifyContent : 'space-around'
     },
     bottomBox :{
         width : '90%',

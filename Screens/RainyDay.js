@@ -12,11 +12,10 @@ const RainyDay = props =>{
             <StatusBar 
                 backgroundColor={Colors.rainyDay}/>
             <DetailsCover
-                dayQuote="It's raining now"
-                location="Himachal Pradesh, India"
-                temperature={32}
-                windSpeed={10}
-                humidity={45}
+                locationAddress={props.address}
+                weatherData={props.weatherData}
+                showMapHandler={props.showMapHandler}
+                getMyLocation={props.getMyLocationHandler}
             ><Image source={require('../assets/Images/Raining3.png')} style={styles.image}/></DetailsCover>
         </View>
     )

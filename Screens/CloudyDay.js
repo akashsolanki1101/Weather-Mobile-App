@@ -1,21 +1,22 @@
 import React from 'react'
 
-import {View,Text,StyleSheet,StatusBar,Image} from 'react-native'
+import {View,StyleSheet,StatusBar,Image} from 'react-native'
+import {useSelector} from 'react-redux' 
 
 import Colors from '../Constants/Colors'
 import DetailsCover from '../Components/DetailsCover'
 
 const CloudyDay = props =>{
+
     return(
         <View style={styles.container}>
             <StatusBar 
                 backgroundColor={Colors.cloudyDay}/>
             <DetailsCover
-                dayQuote="Sun under the clouds"
-                location="Pune, Maharashtra"
-                temperature={32}
-                windSpeed={10}
-                humidity={45}
+                locationAddress={props.address}
+                weatherData={props.weatherData}
+                showMapHandler={props.showMapHandler}
+                getMyLocation={props.getMyLocationHandler}
             ><Image source={require('../assets/Images/Cloudy.png')} style={styles.image}/></DetailsCover>
         </View>
     )
