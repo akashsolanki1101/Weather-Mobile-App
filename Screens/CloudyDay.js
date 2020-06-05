@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {View,StyleSheet,StatusBar,Image} from 'react-native'
-import {useSelector} from 'react-redux' 
 
 import Colors from '../Constants/Colors'
 import DetailsCover from '../Components/DetailsCover'
@@ -17,6 +16,7 @@ const CloudyDay = props =>{
                 weatherData={props.weatherData}
                 showMapHandler={props.showMapHandler}
                 getMyLocation={props.getMyLocationHandler}
+                showFutureDataHandler={props.showFutureDataHandler}
             ><Image source={require('../assets/Images/Cloudy.png')} style={styles.image}/></DetailsCover>
         </View>
     )

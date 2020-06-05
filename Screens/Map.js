@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useRef} from 'react'
 
 import {View,StyleSheet,StatusBar} from 'react-native'
 import {useDispatch} from 'react-redux'
@@ -15,6 +15,13 @@ const MapScreen = props =>{
         longitude : props.long ? props.long : null
     })
 
+    const myLocation = useRef({
+        latitude : selectedLocation.latitude,
+        longitude : selectedLocation.longitude
+    })
+
+    
+
     const dispatch = useDispatch()
 
     const mapRegion = {
@@ -22,6 +29,13 @@ const MapScreen = props =>{
         longitude : selectedLocation.longitude,
         latitudeDelta : 0.0922,
         longitudeDelta : 0.0421,
+    }
+
+    const edgePadding = {
+        top : 10,
+        right : 10,
+        bottom : 10,
+        left : 10
     }
 
     const selectedLocationHandler = event =>{
@@ -52,7 +66,14 @@ const MapScreen = props =>{
     return(
         <View style={styles.container}>
             <StatusBar backgroundColor={Colors.color2}/>
-            <MapView region={mapRegion} style={styles.map} onPress={selectedLocationHandler} showsMyLocationButton={true} >
+            <MapView 
+                region={mapRegion} 
+                style={styles.map} 
+                onPress={selectedLocationHandler} 
+                mapPadding={edgePadding}
+                showsMyLocationButton={true}
+                showsUserLocation={true}
+                >
                 {
                     markersCoordinates&&<Marker title="Picked Location" coordinate={markersCoordinates}/>
                 }
@@ -69,7 +90,7 @@ const styles = StyleSheet.create({
         flex : 1 
     },
     map:{
-        flex : 1
+        flex : 1,
     },
     backArrow :{
         position : 'absolute',

@@ -1,28 +1,52 @@
 import {SET_WEATHER_DATA} from '../Actions/Weather'
 
 const initialState = {
-    summary : '',
-    temperature : null,
-    humidity : null,
-    windSpeed : null,
-    visibility : null,
-    uvIndex : null,
-    icon : null
+    currently:{
+        summary : '',
+        temperature : null,
+        humidity : null,
+        windSpeed : null,
+        visibility : null,
+        uvIndex : null,
+        icon : null
+    },
+    hourly:{
+        summary : '',
+        temperature : null,
+        humidity : null,
+        windSpeed : null,
+        visibility : null,
+        uvIndex : null,
+    },
+
 }
 
 const reducer = (state = initialState , action)=>{
     switch(action.type)
     {
         case SET_WEATHER_DATA:
+            const currentlyData = {
+                summary : action.currently.summary,
+                temperature : action.currently.temperature,
+                humidity : action.currently.humidity,
+                windSpeed : action.currently.windSpeed,
+                visibility : action.currently.visibility,
+                uvIndex : action.currently.uvIndex,
+                icon : action.currently.icon
+            }
+            const hourlyData = {
+                summary : action.hourly.summary,
+                temperature : action.hourly.temperature,
+                humidity : action.hourly.humidity,
+                windSpeed : action.hourly.windSpeed,
+                visibility : action.hourly.visibility,
+                uvIndex : action.hourly.uvIndex,
+            }
+
             return{
                 ...state,
-                summary : action.weatherData.summary,
-                temperature : action.weatherData.temperature,
-                humidity : action.weatherData.humidity,
-                windSpeed : action.weatherData.windSpeed,
-                visibility : action.weatherData.visibility,
-                uvIndex : action.weatherData.uvIndex,
-                icon : action.weatherData.icon
+                currently : currentlyData,
+                hourly : hourlyData,
             }
         
         default :

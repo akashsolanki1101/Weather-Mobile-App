@@ -18,6 +18,7 @@ const SunnyDay = props =>{
                 weatherData={props.weatherData}
                 showMapHandler={props.showMapHandler}
                 getMyLocation={props.getMyLocationHandler}
+                showFutureDataHandler={props.showFutureDataHandler}
             ><Image source={require('../assets/Images/Sun-With-Shadow4.png')} style={styles.image}/></DetailsCover>
         </View>
     )

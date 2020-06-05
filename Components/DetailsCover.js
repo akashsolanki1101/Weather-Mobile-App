@@ -1,12 +1,36 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 import {View,Text,StyleSheet,Image,FlatList} from 'react-native'
 import {Feather,Entypo,MaterialIcons} from '@expo/vector-icons'
+import {useDispatch,useSelector} from 'react-redux'
 
 import Card from './Card'
-// import Colors from '../Constants/Colors'
+import {fetchLocation,fetchAddress} from '../Store/Actions/Location'
+import {fetchWeatherData} from '../Store/Actions/Weather'
 
 const DetailsCover = props =>{
+    const [isFetched,settIsfetched] = useState(false)
+    const [location,setLocation] = useState({
+        latitude : useSelector(state=>state.location.latitude),
+        longitude : useSelector(state=>state.location.longitude)
+    })
+
+    const dispatch = useDispatch()
+
+    const fetchMyLocationHandler=async()=>{
+        await dispatch(fetchLocation())
+        settIsfetched(true)
+    }
+
+    const fetchOtherData=async()=>{
+        await fetchMyLocationHandler()
+        if(isFetched)
+        {
+            dispatch(fetchAddress(location))
+            dispatch(fetchWeatherData(location.latitude,location.longitude))
+        }
+    }
+
     return(
         <View style={styles.container}>
             <View style={styles.details}>
@@ -16,7 +40,8 @@ const DetailsCover = props =>{
                     </View>
                     <View style={styles.mapIcon}>
                         <Feather name='map' color={'white'} size={25} onPress={props.showMapHandler}/>
-                        <MaterialIcons name='my-location' color={'white'} size={28} onPress={props.getMyLocation}/>                        
+                        <MaterialIcons name='my-location' color={'white'} size={28} onPress={fetchOtherData}/>
+                        <Feather name='chevron-right' color={'white'} size={25} onPress={props.showFutureDataHandler}/>
                     </View>
                 </View> 
                 <View style={styles.imageBox}>
@@ -63,6 +88,7 @@ const styles = StyleSheet.create({
     },
     dayType :{ 
         width : '40%',
+        // borderWidth : 1
     },
     dayTypeText:{
         fontSize : 30,
@@ -70,9 +96,10 @@ const styles = StyleSheet.create({
         textAlign : 'justify'
     },
     mapIcon:{
-        height : 85,
+        height : 120,
         paddingTop : 10,
-        justifyContent : 'space-around'
+        justifyContent : 'space-between',
+        // borderWidth : 1
     },
     bottomBox :{
         width : '90%',

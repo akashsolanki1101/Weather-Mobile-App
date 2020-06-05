@@ -1,16 +1,18 @@
 import React from 'react'
 
-import {View,StyleSheet,StatusBar,Image} from 'react-native'
+import {View,StyleSheet,StatusBar} from 'react-native'
 
 import Colors from '../Constants/Colors'
 import DetailsCover from '../Components/DetailsCover'
 
+const OtherWeatherCondition = props =>{
 
-const RainyDay = props =>{
+    
+
     return(
         <View style={styles.container}>
             <StatusBar 
-                backgroundColor={Colors.rainyDay}/>
+                backgroundColor={Colors.color1}/>
             <DetailsCover
                 locationAddress={props.address}
                 weatherData={props.weatherData}
@@ -18,7 +20,7 @@ const RainyDay = props =>{
                 getMyLocation={props.getMyLocationHandler}
                 showFutureDataHandler={props.showFutureDataHandler}
 
-            ><Image source={require('../assets/Images/Raining3.png')} style={styles.image}/></DetailsCover>
+            />
         </View>
     )
 }
@@ -26,14 +28,9 @@ const RainyDay = props =>{
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        backgroundColor : Colors.rainyDay,
+        backgroundColor : Colors.color1,
         paddingVertical : 30
     },
-    image:{
-        width : 450,
-        height : 450,
-        // zIndex : 10,
-    }
 })
 
-export default RainyDay
+export default OtherWeatherCondition
