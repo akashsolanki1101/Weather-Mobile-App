@@ -41,7 +41,7 @@ const DetailsCover = props =>{
                     <View style={styles.mapIcon}>
                         <Feather name='map' color={'white'} size={25} onPress={props.showMapHandler}/>
                         <MaterialIcons name='my-location' color={'white'} size={28} onPress={fetchOtherData}/>
-                        <Feather name='chevron-right' color={'white'} size={25} onPress={props.showFutureDataHandler}/>
+                        <Feather name='chevron-right' color={'white'} size={30} onPress={props.showFutureDataHandler}/>
                     </View>
                 </View> 
                 <View style={styles.imageBox}>

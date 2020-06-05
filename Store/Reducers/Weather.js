@@ -8,7 +8,8 @@ const initialState = {
         windSpeed : null,
         visibility : null,
         uvIndex : null,
-        icon : null
+        icon : null,
+        time : null
     },
     hourly:{
         summary : '',
@@ -32,7 +33,8 @@ const reducer = (state = initialState , action)=>{
                 windSpeed : action.currently.windSpeed,
                 visibility : action.currently.visibility,
                 uvIndex : action.currently.uvIndex,
-                icon : action.currently.icon
+                icon : action.currently.icon,
+                time:  new Date(action.currently.time*1000),
             }
             const hourlyData = {
                 summary : action.hourly.summary,

@@ -6,7 +6,7 @@ const setWeatherDataHandler = ({currently,hourly})=>{
     return{
         type : SET_WEATHER_DATA,
         currently,
-        hourly,
+        hourly:hourly.data[0],
     }
 }
 

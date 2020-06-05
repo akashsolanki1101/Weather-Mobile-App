@@ -11,7 +11,7 @@ const Card = props =>{
         unit = 'km'
         
     return(
-        <View style={styles.card}>
+        <View style={{...styles.card,...props.style}}>
             <Text style={styles.title}>
                 {props.title}
             </Text>

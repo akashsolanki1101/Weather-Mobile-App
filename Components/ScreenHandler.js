@@ -23,8 +23,6 @@ const ScreenHandler = props=>{
        longitude : useSelector(state => state.location.longitude),
        address : useSelector(state => state.location.address)
     }
-    console.log('Check',locationData);
-    
 
     const weatherData = {
         icon : useSelector(state => state.weather.currently.icon),
@@ -54,74 +52,81 @@ const ScreenHandler = props=>{
         setIsLoading(false)
     }
 
-    // useEffect(()=>{
-    //     const loadLocation = async ()=>{
-    //         try{
-    //             setIsLoading(true)
-    //             await dispatch(fetchLocation())
-    //         }
-    //         catch(err)
-    //         {
-    //             setErrorMessage(err)
-    //             setIsLoading(false)
-    //         }
-    //     }
-    //     loadLocation()  
-    // },[dispatch])
+    useEffect(()=>{
+        const loadLocation = async ()=>{
+            try{
+                setIsLoading(true)
+                await dispatch(fetchLocation())
+            }
+            catch(err)
+            {
+                setErrorMessage(err)
+                setIsLoading(false)
+            }
+        }
+        loadLocation()  
+    },[dispatch])
 
-    // if(locationData.latitude & locationData.longitude)
-    // {
-    //     loadOtherData()
-    // }
+    if(locationData.latitude & locationData.longitude)
+    {
+        loadOtherData()
+    }
 
-    // if(isLoading)
-    // {
-    //     return(
-    //         <View style={styles.loader}>
-    //             <ActivityIndicator size={50}/>
-    //         </View>
-    //     ) 
-    // }
-    // if(errorMessage)
-    // {
-    //     return null;
-    // }
+    if(isLoading)
+    {
+        return(
+            <View style={styles.loader}>
+                <ActivityIndicator size={50}/>
+            </View>
+        ) 
+    }
+    if(errorMessage)
+    {
+        return null;
+    }
 
-    // if(showMap)
-    // {
-    //     return <MapScreen lat={locationData.latitude} long ={locationData.longitude} showMapHandler={showMapHandler}/>
-    // }
+    if(showMap)
+    {
+        return <MapScreen lat={locationData.latitude} long ={locationData.longitude} showMapHandler={showMapHandler}/>
+    }
 
-    
+    if(weatherData.summary && weatherData.icon)
+    {
+        if(weatherData.summary.includes('cloud')|| weatherData.summary.includes('Cloud') || weatherData.icon.includes('cloud') || weatherData.icon.includes('Cloud'))
+        {
+            return(
+                <View style={styles.container}> 
+                    <CloudyDay weatherData={weatherData} address={locationData.address} showMapHandler={showMapHandler} showFutureDataHandler={showFutureDataHandler}/>
+                    {
+                        showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
+                    }
+                </View>
+            )
+        }
+        else if(weatherData.summary.includes('rain')|| weatherData.summary.includes('Rain') || weatherData.icon.includes('rain') || weatherData.icon.includes('Rain'))
+        {
+            return(
+                <View style={styles.container}> 
+                    <RainyDay weatherData={weatherData} address={locationData.address} showMapHandler={showMapHandler} showFutureDataHandler={showFutureDataHandler}/>
+                    {
+                        showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
+                    }
+                </View>
+            )
+        }
 
-    // if(weatherData.summary && weatherData.icon)
-    // {
-    //     if(weatherData.summary.includes('cloud')|| weatherData.summary.includes('Cloud') || weatherData.icon.includes('cloud') || weatherData.icon.includes('Cloud'))
-    //     {
-    //         return(
-    //             <View style={styles.container}> 
-    //                 <CloudyDay weatherData={weatherData} address={locationData.address} showMapHandler={showMapHandler} showFutureDataHandler={showFutureDataHandler}/>
-    //             </View>
-    //         )
-    //     }
-    //     else if(weatherData.summary.includes('rain')|| weatherData.summary.includes('Rain') || weatherData.icon.includes('rain') || weatherData.icon.includes('Rain'))
-    //     {
-    //         return(
-    //             <View style={styles.container}> 
-    //                 <RainyDay weatherData={weatherData} address={locationData.address} showMapHandler={showMapHandler} showFutureDataHandler={showFutureDataHandler}/>
-    //             </View>
-    //         )
-    //     }
-
-    //     else if(weatherData.summary.includes('sun')|| weatherData.summary.includes('Sun')||weatherData.summary.includes('clear')||weatherData.summary.includes('Clear') || weatherData.icon.includes('sun') || weatherData.icon.includes('Sun')|| weatherData.icon.includes('clear')||weatherData.icon.includes('Clear'))
-    //     {
-    //         return(
-    //             <View style={styles.container}> 
-    //                 <SunnyDay weatherData={weatherData} address={locationData.address} showMapHandler={showMapHandler} showFutureDataHandler={showFutureDataHandler}/>
-    //             </View>
-    //         )
-    //     }
-    // }
+        else if(weatherData.summary.includes('sun')|| weatherData.summary.includes('Sun')||weatherData.summary.includes('clear')||weatherData.summary.includes('Clear') || weatherData.icon.includes('sun') || weatherData.icon.includes('Sun')|| weatherData.icon.includes('clear')||weatherData.icon.includes('Clear'))
+        {
+            return(
+                <View style={styles.container}> 
+                    <SunnyDay weatherData={weatherData} address={locationData.address} showMapHandler={showMapHandler} showFutureDataHandler={showFutureDataHandler}/>
+                    {
+                        showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
+                    }
+                </View>
+            )
+        }
+    }
 
     return(
         <View style={styles.container}>
