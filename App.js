@@ -1,19 +1,12 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 
 import {createStore,combineReducers,applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {AppLoading} from 'expo'
 import * as Fonts from 'expo-font'
 import ReduxThunk from 'redux-thunk'
-// import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet,ScrollView,View} from 'react-native';
 
-// import CloudyDay from './Screens/CloudyDay';
-// import SunnyDay from './Screens/SunnyDay';
-// import RainyDay from './Screens/RainyDay';
-// import LocationPicker from './Components/LocationPicker';
-// import GetWeatherData from './Components/GetWeatherData'
-// import MapScreen from './Screens/Map'
-// import ENV from './ENV'
 import Location from './Store/Reducers/Location'
 import Weather from './Store/Reducers/Weather'
 
@@ -46,10 +39,19 @@ const App = ()=>{
   
   return (
     <Provider store={store}>
-        <ScreenHandler />
+      <ScrollView
+        contentContainerStyle={styles.scrlview}>
+          <ScreenHandler />
+      </ScrollView>
     </Provider>
   )
 }
 
+const styles = StyleSheet.create({
+  scrlview :{
+    display  : 'flex',
+    flexGrow : 1,
+  },
+})
 
 export default App

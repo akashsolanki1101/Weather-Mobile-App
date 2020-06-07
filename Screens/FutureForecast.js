@@ -4,7 +4,6 @@ import {View,Text,StyleSheet} from 'react-native'
 import {useSelector} from 'react-redux'
 import {Entypo} from '@expo/vector-icons'
 
-import Colors from '../Constants/Colors'
 import Card from '../Components/Card'
 
 const  FutureForecast = props =>{
@@ -64,7 +63,8 @@ const styles = StyleSheet.create({
         width : '72%',
         backgroundColor : '#rgba(0, 0, 0, .4)',
         elevation : 5,
-        padding : 20
+        padding : 20,
+    
     },
     topBar:{
         display : 'flex',
@@ -100,11 +100,12 @@ const styles = StyleSheet.create({
     addressBox:{
         borderTopWidth : 2,
         borderTopColor : 'white',
-        padding : 10
+        padding : 10,
     },
     addressText:{
         color : 'white',
         fontSize : 20,
+        fontWeight : '700'
     },
 
 })

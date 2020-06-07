@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-import {View,Text,StyleSheet,Image,FlatList} from 'react-native'
+import {View,Text,StyleSheet,FlatList} from 'react-native'
 import {Feather,Entypo,MaterialIcons} from '@expo/vector-icons'
 import {useDispatch,useSelector} from 'react-redux'
 
@@ -38,7 +38,7 @@ const DetailsCover = props =>{
                     <View style={styles.dayType}>
                         <Text style={styles.dayTypeText}>{props.weatherData.summary}</Text>
                     </View>
-                    <View style={styles.mapIcon}>
+                    <View style={styles.icons}>
                         <Feather name='map' color={'white'} size={25} onPress={props.showMapHandler}/>
                         <MaterialIcons name='my-location' color={'white'} size={28} onPress={fetchOtherData}/>
                         <Feather name='chevron-right' color={'white'} size={30} onPress={props.showFutureDataHandler}/>
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
         color : '#fff',
         textAlign : 'justify'
     },
-    mapIcon:{
-        height : 120,
+    icons:{
+        height : 130,
         paddingTop : 10,
         justifyContent : 'space-between',
         // borderWidth : 1
@@ -125,8 +125,9 @@ const styles = StyleSheet.create({
     imageBox:{
         // borderWidth : 1,
         width : '80%',
+        display:'flex',
         alignItems : 'center',
-        justifyContent :'center'
+        // justifyContent :'center'
     }
 })
 

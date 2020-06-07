@@ -1,8 +1,6 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 
-import {View,Text,StyleSheet, StatusBar,Image} from 'react-native'
-// import NavigationBar from 'react-native-navbar-color'
-// import changeNavigationBarColor from 'react-native-navigation-bar-color'
+import {View,StyleSheet, StatusBar,Image} from 'react-native'
 
 import Colors from '../Constants/Colors'
 import DetailsCover from '../Components/DetailsCover'

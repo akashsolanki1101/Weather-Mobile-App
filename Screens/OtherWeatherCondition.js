@@ -6,9 +6,6 @@ import Colors from '../Constants/Colors'
 import DetailsCover from '../Components/DetailsCover'
 
 const OtherWeatherCondition = props =>{
-
-    
-
     return(
         <View style={styles.container}>
             <StatusBar 

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 
-import {View,Text,StyleSheet,ActivityIndicator} from 'react-native'
+import {View,StyleSheet,ActivityIndicator} from 'react-native'
 import {useSelector,useDispatch} from 'react-redux'
 
 import CloudyDay from '../Screens/CloudyDay';
@@ -100,7 +100,7 @@ const ScreenHandler = props=>{
                     {
                         showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
                     }
-                </View>
+                    </View>
             )
         }
         else if(weatherData.summary.includes('rain')|| weatherData.summary.includes('Rain') || weatherData.icon.includes('rain') || weatherData.icon.includes('Rain'))
@@ -111,7 +111,7 @@ const ScreenHandler = props=>{
                     {
                         showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
                     }
-                </View>
+                    </View>
             )
         }
 
@@ -123,7 +123,7 @@ const ScreenHandler = props=>{
                     {
                         showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
                     }
-                </View>
+                    </View>
             )
         }
     }
@@ -134,7 +134,7 @@ const ScreenHandler = props=>{
             {
                 showFutureData&& <FutureForecast showFutureDataHandler={showFutureDataHandler}/>
             }
-        </View>
+            </View>
     ) 
 }
 
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     },
     loader :{
         flex : 1,
+        display:'flex',
         alignItems : 'center',
         justifyContent : 'center'
     }
