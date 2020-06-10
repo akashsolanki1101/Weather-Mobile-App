@@ -1,20 +1,20 @@
 {
   
   "expo": {
-    "name": "weather-app",
+    "name": "Weather App",
+    "description" :"A nice weather app with a really unique UI",
     "slug": "weather-app",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00B4DB"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

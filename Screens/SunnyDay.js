@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
         paddingVertical : 30,
     },
     image:{
-        width : 500,
-        height : 500,
+        width : 450,
+        height : 450,
         // zIndex : 10,
     }
 })
