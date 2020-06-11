@@ -5,14 +5,14 @@
 
 <img src="https://i.ibb.co/F5xxNcs/Img2.jpg" 
      alt="Future Forecast Screen"  
-     style="float: left;margin-right: 50px" 
-     width="180"/><img src="https://i.ibb.co/yBJ1JnG/Img3.jpg" 
+     style="float: left" 
+     width="170"/><img src="https://i.ibb.co/yBJ1JnG/Img3.jpg" 
      alt="Future Forecast Screen" 
-     width="180" 
-     style="float:left;margin-right:50px"/><img src="https://i.ibb.co/D7nqRRK/Img4.jpg" 
+     width="170" 
+     style="float:left"/><img src="https://i.ibb.co/D7nqRRK/Img4.jpg" 
      alt="Future Forecast Screen" 
-     width="180" 
-     style="float:left;margin-right:50px"/><img src="https://i.ibb.co/mC8YWC6/Img1.jpg" 
+     width="170" 
+     style="float:left"/><img src="https://i.ibb.co/mC8YWC6/Img1.jpg" 
      alt="Future Forecast Screen" 
-     width="180" 
-     style="float:left ;margin-right:50px"/>
+     width="170" 
+     style="float:left"/>
