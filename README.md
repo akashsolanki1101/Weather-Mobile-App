@@ -20,3 +20,5 @@
 Along with react native features, I used:
 1. Drysky api to get weather data for given lat & lang.
 2. Mapbox to get address for particular lat & lamg
+
+##### I got UI inspiration from dribble, created by Sencer B. Yilmaz.
