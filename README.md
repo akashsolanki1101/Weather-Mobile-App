@@ -1,4 +1,4 @@
 # Weather App
 A weather app made by using react-native with a really amazing UI.
 
-<img src="https://i.ibb.co/mC8YWC6/Img1.jpg" width="500" height="500"/>
+<img src="https://i.ibb.co/mC8YWC6/Img1.jpg" width="300" height="500"/>
