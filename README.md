@@ -1,5 +1,5 @@
-# Weather App
-#### A weather app made by using react-native with a *really amazing UI*.
+# Weather App :sunny: :sun_behind_rain_cloud: :cloud:
+#### A weather app made by using react-native with a :wink: *really amazing UI*.
 
 ## Screenshots
 
@@ -17,3 +17,6 @@
      width="200px" 
      style="float:left"/>
 
+Along with react native features, I used:
+     - drysky api to get weather data for given lat & lang.
+     - mapbox to get address for particular lat & lamg
