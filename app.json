@@ -23,7 +23,23 @@
       "**/*"
     ],
     "ios": {
+      "buildNumber" : "1.0.0",
       "supportsTablet": true
+    },
+    "android":{
+      "package":"com.akash.weather_app",
+      "versionCode" :1,
+      "adaptiveIcon" :{
+        "foregroundImage" : "./assets/icon.png",
+        "backgroundColor":"#00B4DB"
+      },
+      "permissions": ["ACCESS_FINE_LOCATION"],
+      "config":{
+        "googleMaps": {
+          "apiKey":"YOUR_API_KEY"
+        }
+      }
+      
     }
   }
 }
