@@ -4,9 +4,9 @@
 ## Screenshots
 
 <img src="https://i.ibb.co/F5xxNcs/Img2.jpg" 
-     alt="Future Forecast Screen" 
-     width="200" 
-     style="float:left;margin-right:50"/><img src="https://i.ibb.co/yBJ1JnG/Img3.jpg" 
+     alt="Future Forecast Screen"  
+     style="float: left;margin-right: 50px" 
+     width="200"/><img src="https://i.ibb.co/yBJ1JnG/Img3.jpg" 
      alt="Future Forecast Screen" 
      width="200" 
      style="float:left;margin-right:50px"/>
