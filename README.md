@@ -18,5 +18,5 @@
      style="float:left"/>
 
 Along with react native features, I used:
-    - Drysky api to get weather data for given lat & lang.
-    - Mapbox to get address for particular lat & lamg
+1. Drysky api to get weather data for given lat & lang.
+2. Mapbox to get address for particular lat & lamg
